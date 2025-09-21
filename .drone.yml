@@ -1,0 +1,166 @@
+kind: pipeline
+type: kubernetes
+
+steps:
+  - name: cordova-build
+    image: plugins/docker
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./cordova-build/Dockerfile
+      tags: cordova-build
+      context: ./cordova-build
+
+  - name: freqtrade
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./freqtrade/Dockerfile
+      tags: freqtrade
+      context: ./freqtrade
+      target: freqtrade
+
+  - name: freqtradepi
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./freqtrade/Dockerfile
+      tags: freqtradepi
+      context: ./freqtrade
+      target: pi
+      platforms:
+        - linux/arm/v8
+
+  - name: freqai
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./freqtrade/Dockerfile
+      tags: freqai
+      context: ./freqtrade
+      target: freqai
+
+  - name: guardian
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./guardian/Dockerfile
+      tags: guardian
+      context: ./guardian
+      platforms:
+        - linux/amd64
+        - linux/arm64
+
+  - name: icecast
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./icecast/Dockerfile
+      tags: icecast
+      context: ./icecast
+      platforms:
+        - linux/amd64
+        - linux/arm64
+
+  - name: lftp
+    image: plugins/docker
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./lftp/Dockerfile
+      tags: lftp
+      context: ./lftp
+
+  - name: liquidsoap
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./liquidsoap/Dockerfile
+      tags: liquidsoap
+      context: ./liquidsoap
+      platforms:
+        - linux/amd64
+        - linux/arm64
+
+  - name: prettier
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./prettier/Dockerfile
+      tags: prettier
+      context: ./prettier
+      platforms:
+        - linux/amd64
+        - linux/arm64
+
+  - name: rtmp
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./rtmp/Dockerfile
+      tags: rtmp
+      context: ./rtmp
+      platforms:
+        - linux/amd64
+        - linux/arm64
+
+  - name: symfony-php-nginx
+    image: plugins/docker
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./symfony-php-nginx/Dockerfile
+      tags: symfony-php-nginx
+      context: ./symfony-php-nginx
+
+  - name: versionning
+    image: plugins/docker
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./versionning/Dockerfile
+      tags: versionning
+      context: ./versionning
+      platforms:
+        - linux/amd64
+        - linux/arm64

@@ -1,0 +1,11 @@
+{
+  "name": "prettier",
+  "version": "0.0.1",
+  "description": "Prettier",
+  "author": {
+    "name": "sgj0",
+    "email": "contact@sgj0.net",
+    "url": "https://sgj0.net/"
+  },
+  "license": "MIT"
+}
