@@ -2,8 +2,8 @@ FROM php:8.4-fpm-alpine AS base
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
-RUN apk add --update --no-cache nano rsync git nginx supervisor shadow libzip libpng libjpeg-turbo freetype icu \
-  && apk add --update --no-cache --virtual=build-dependencies $PHPIZE_DEPS icu-dev libzip-dev libxml2-dev oniguruma-dev libpng-dev libjpeg-turbo-dev freetype-dev \
+RUN apk add --update --no-cache nano rsync git nginx supervisor shadow libzip libpng libwebp libjpeg-turbo freetype icu \
+  && apk add --update --no-cache --virtual=build-dependencies $PHPIZE_DEPS icu-dev libzip-dev libxml2-dev oniguruma-dev libpng-dev libwebp-dev libjpeg-turbo-dev freetype-dev \
   && docker-php-ext-configure gd --with-freetype --with-webp --with-jpeg \
   && docker-php-ext-install -j$(nproc) intl zip pdo pdo_mysql xml mbstring gd \
   && apk del --purge build-dependencies \
