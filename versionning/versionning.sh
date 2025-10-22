@@ -35,6 +35,7 @@ update_version_in_file() {
 
 update_version_in_file $NEW_VERSION "package.json"
 update_version_in_file $NEW_VERSION "composer.json"
+update_version_in_file $NEW_VERSION "server/composer.json"
 update_version_in_file $NEW_VERSION "server/package.json"
 update_version_in_file $NEW_VERSION "client/package.json"
 update_version_in_file $NEW_VERSION "mobile/package.json"
