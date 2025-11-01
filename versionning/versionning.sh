@@ -15,13 +15,14 @@ VERSION=$(jq --raw-output '.version' package.json)
 NEW_VERSION=$(semver -i $LEVEL $VERSION)
 
 update_version_in_file() {
-
   if [ -e $2 ]; then
     FILENAME=$(basename -- "$2")
     EXTENSION="${FILENAME##*.}"
 
     if [ $EXTENSION = "json" ]; then
       CONTENT=$(jq ".version = \"$1\"" $2)
+    elif [ $EXTENSION = "toml" ]; then
+      CONTENT=$(sed "s/^version = \".*\"\$/version = \"$1\"/g" $2)
     elif [ $EXTENSION = "xml" ]; then
       CONTENT=$(yq -oy ".widget.+@version = \"$1\"" $2 -o xml)
     fi
@@ -40,3 +41,4 @@ update_version_in_file $NEW_VERSION "server/package.json"
 update_version_in_file $NEW_VERSION "client/package.json"
 update_version_in_file $NEW_VERSION "mobile/package.json"
 update_version_in_file $NEW_VERSION "mobile/config.xml"
+update_version_in_file $NEW_VERSION "pyproject.toml"
