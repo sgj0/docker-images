@@ -9,8 +9,7 @@ RUN apk add --update --no-cache nano rsync git nginx py-pip shadow libzip libpng
   && apk del --purge build-dependencies \
   && pip install --break-system-packages supervisor \
   && echo_supervisord_conf > /etc/supervisord.conf \
-  && echo "files = /etc/supervisor.d/*.ini" >> /etc/supervisord.conf \
-  && mkdir -p /etc/supervisor.d \
+  && echo -e '[include]\nfiles = /etc/supervisor.d/*.ini' >> /etc/supervisord.conf \
   && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
 COPY conf/nginx/default.nginx /etc/nginx/http.d/default.conf
