@@ -6,6 +6,7 @@ const config = {
     require.resolve("prettier-plugin-nginx"),
     require.resolve("prettier-plugin-sh"),
     require.resolve("prettier-plugin-sql"),
+    require.resolve("prettier-plugin-toml"),
   ],
 };
 
