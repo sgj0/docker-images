@@ -151,16 +151,16 @@ steps:
       tags: symfony-php-nginx
       context: ./symfony-php-nginx
 
-  - name: versionning
+  - name: versioning
     image: plugins/docker
     settings:
       username: sgj0
       password:
         from_secret: DOCKER_PASSWORD
       repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./versionning/Dockerfile
-      tags: versionning
-      context: ./versionning
+      dockerfile: ./versioning/Dockerfile
+      tags: versioning
+      context: ./versioning
       platforms:
         - linux/amd64
         - linux/arm64

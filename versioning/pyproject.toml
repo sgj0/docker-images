@@ -1,0 +1,16 @@
+[project]
+name = "versioning"
+version = "1.0.0"
+description = "Semver processing"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [{ name = "sgj0", email = "contact@sgj0.net" }]
+dependencies = [
+    "black",
+    "semver",
+    "toml",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
