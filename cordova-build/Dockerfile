@@ -4,7 +4,6 @@ ADD https://services.gradle.org/distributions/gradle-9.0.0-bin.zip /tmp/gradle-9
 
 RUN apk add --update --no-cache rsync nodejs npm jq \
  && npm install -g yarn cordova \
- && cordova telemetry off \
  && mkdir /opt/gradle \
  && unzip -d /opt/gradle /tmp/gradle-9.0.0-bin.zip \
  && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
