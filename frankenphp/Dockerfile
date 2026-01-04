@@ -5,6 +5,7 @@ COPY entrypoint.sh /entrypoint
 
 ENV SERVER_NAME=:80
 ENV MAX_REQUESTS=100
+ENV COMPOSER_CACHE_DIR=/tmp
 
 RUN install-php-extensions pdo_mysql intl zip
 
