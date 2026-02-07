@@ -1,7 +1,7 @@
 FROM ubuntu:24.04
 
 ARG TARGETARCH
-ARG LIQUIDSOAP_VERSION="2.3.3"
+ARG LIQUIDSOAP_VERSION="2.4.2"
 
 ADD https://cdn.sgj0.net/assets/liquidsoap_${LIQUIDSOAP_VERSION}_${TARGETARCH}.deb /tmp/liquidsoap.deb
 
