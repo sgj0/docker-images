@@ -3,7 +3,7 @@ FROM alvrme/alpine-android:android-35-jdk21
 ADD https://services.gradle.org/distributions/gradle-9.4.0-bin.zip /tmp/gradle-9.4.0-bin.zip
 
 RUN apk add --update --no-cache rsync nodejs npm jq \
- && npm install --location=global cordova \
+ && npm install --location=global pnpm cordova \
  && mkdir /opt/gradle \
  && unzip -d /opt/gradle /tmp/gradle-9.4.0-bin.zip \
  && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
