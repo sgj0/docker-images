@@ -31,7 +31,7 @@ def build_docker_images():
         
         # Determine the correct platform, falling back to the default.
         match tag:
-            case "guardian" | "icecast" | "liquidsoap" | "prettier" | "rtmp" | "versionning":
+            case "guardian" | "icecast" | "liquidsoap" | "node-tools" | "prettier" | "rtmp" | "versionning":
                 platform = "linux/amd64,linux/arm64"
             case "freqtradepi":
                 platform = "linux/arm/v8"
