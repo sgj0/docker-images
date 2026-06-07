@@ -17,3 +17,11 @@ COPY entrypoint.sh /entrypoint
 ENTRYPOINT ["/entrypoint"]
 
 EXPOSE 80
+
+FROM base AS dev
+
+RUN apk add --update --no-cache npm \
+  && npm install --location=global pnpm \
+  && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
+
+FROM base AS prod

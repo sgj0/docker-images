@@ -166,7 +166,19 @@ steps:
         - linux/amd64
         - linux/arm64
 
-  - name: symfony-php-nginx
+  - name: symfony-php-nginx-dev
+    image: plugins/docker
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./symfony-php-nginx/Dockerfile
+      tags: symfony-php-nginx-dev
+      context: ./symfony-php-nginx
+      target: dev
+
+  - name: symfony-php-nginx-prod
     image: plugins/docker
     settings:
       username: sgj0
@@ -176,6 +188,7 @@ steps:
       dockerfile: ./symfony-php-nginx/Dockerfile
       tags: symfony-php-nginx
       context: ./symfony-php-nginx
+      target: prod
 
   - name: versioning
     image: plugins/docker
