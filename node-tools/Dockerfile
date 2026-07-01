@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-RUN apk add --update --no-cache shadow git \
+RUN apk add --update --no-cache alpine-sdk zip shadow git \
   && npm install --location=global npm pnpm npm-check-updates npm-run-all cordova \
   && npm cache clean --force \
   && mkdir -p /app \
