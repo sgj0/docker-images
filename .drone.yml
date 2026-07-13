@@ -3,7 +3,9 @@ type: kubernetes
 
 steps:
   - name: cordova-build
-    image: plugins/docker
+    image: 
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       username: sgj0
       password:
@@ -17,7 +19,9 @@ steps:
         - linux/arm64
 
   - name: frankenphp
-    image: plugins/docker
+    image: 
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       username: sgj0
       password:
@@ -99,7 +103,9 @@ steps:
         - linux/arm64
 
   - name: lftp
-    image: plugins/docker
+    image: 
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       username: sgj0
       password:
@@ -170,7 +176,9 @@ steps:
         - linux/arm64
 
   - name: symfony-php-nginx-dev
-    image: plugins/docker
+    image: 
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       username: sgj0
       password:
@@ -182,7 +190,9 @@ steps:
       target: dev
 
   - name: symfony-php-nginx-prod
-    image: plugins/docker
+    image: 
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       username: sgj0
       password:
@@ -194,7 +204,9 @@ steps:
       target: prod
 
   - name: versioning
-    image: plugins/docker
+    image: 
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
     settings:
       username: sgj0
       password:
