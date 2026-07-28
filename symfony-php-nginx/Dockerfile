@@ -21,7 +21,5 @@ EXPOSE 80
 FROM base AS dev
 
 RUN apk add --update --no-cache npm \
-  && npm install --location=global pnpm \
+  && npm install --location=global pnpm npm-check-updates npm-run-all cordova \
   && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
-
-FROM base AS prod
