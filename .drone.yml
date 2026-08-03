@@ -3,7 +3,6 @@ type: kubernetes
 
 steps:
   - name: cordova-build
-    image: 
     image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
@@ -19,7 +18,6 @@ steps:
         - linux/arm64
 
   - name: frankenphp
-    image: 
     image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
@@ -30,6 +28,20 @@ steps:
       dockerfile: ./frankenphp/Dockerfile
       tags: frankenphp
       context: ./frankenphp
+      target: prod
+
+  - name: frankenphp-dev
+    image: thegeeklab/drone-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./frankenphp/Dockerfile
+      tags: frankenphp-dev
+      context: ./frankenphp
+      target: dev
 
   - name: freqtrade
     image: thegeeklab/drone-docker-buildx
@@ -103,7 +115,6 @@ steps:
         - linux/arm64
 
   - name: lftp
-    image: 
     image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
@@ -176,7 +187,6 @@ steps:
         - linux/arm64
 
   - name: symfony-php-nginx
-    image: 
     image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
@@ -190,7 +200,6 @@ steps:
       target: base
 
   - name: symfony-php-nginx-dev
-    image: 
     image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
@@ -204,7 +213,6 @@ steps:
       target: dev
 
   - name: versioning
-    image: 
     image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:

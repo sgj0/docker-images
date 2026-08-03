@@ -1,0 +1,43 @@
+{
+    skip_install_trust
+
+    {$CADDY_GLOBAL_OPTIONS}
+
+    frankenphp {
+        {$FRANKENPHP_CONFIG}
+    }
+}
+
+{$CADDY_EXTRA_CONFIG}
+
+{$SERVER_NAME:localhost} {
+    log {
+        level WARN
+
+        format filter {
+            request>uri query {
+                replace authorization REDACTED
+            }
+        }
+    }
+
+    root * /var/www/html/public
+
+    encode zstd br gzip
+
+    {$CADDY_SERVER_EXTRA_DIRECTIVES}
+
+    @phpRoute {
+        not path /.well-known/mercure*
+        not file
+    }
+
+    rewrite @phpRoute /index.php
+
+    @frontController path /index.php
+    php @frontController
+
+    file_server {
+        hide *.php
+    }
+}
