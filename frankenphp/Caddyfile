@@ -21,7 +21,7 @@
         }
     }
 
-    root * /var/www/html/public
+    root * /app/public
 
     encode zstd br gzip
 
