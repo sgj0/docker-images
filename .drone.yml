@@ -56,34 +56,6 @@ steps:
       context: ./freqtrade
       target: freqtrade
 
-  - name: freqtradepi
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./freqtrade/Dockerfile
-      tags: freqtradepi
-      context: ./freqtrade
-      target: pi
-      platforms:
-        - linux/arm/v8
-
-  - name: freqai
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./freqtrade/Dockerfile
-      tags: freqai
-      context: ./freqtrade
-      target: freqai
-
   - name: guardian
     image: thegeeklab/drone-docker-buildx
     privileged: true
@@ -185,32 +157,6 @@ steps:
       platforms:
         - linux/amd64
         - linux/arm64
-
-  - name: symfony-php-nginx
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./symfony-php-nginx/Dockerfile
-      tags: symfony-php-nginx
-      context: ./symfony-php-nginx
-      target: base
-
-  - name: symfony-php-nginx-dev
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./symfony-php-nginx/Dockerfile
-      tags: symfony-php-nginx-dev
-      context: ./symfony-php-nginx
-      target: dev
 
   - name: versioning
     image: thegeeklab/drone-docker-buildx
