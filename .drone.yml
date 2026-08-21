@@ -13,9 +13,6 @@ steps:
       dockerfile: ./cordova-build/Dockerfile
       tags: cordova-build
       context: ./cordova-build
-      platforms:
-        - linux/amd64
-        - linux/arm64
 
   - name: frankenphp
     image: thegeeklab/drone-docker-buildx
