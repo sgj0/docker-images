@@ -54,7 +54,6 @@ steps:
       dockerfile: ./freqtrade/Dockerfile
       tags: freqtrade
       context: ./freqtrade
-      target: freqtrade
 
   - name: guardian
     image: thegeeklab/drone-docker-buildx
