@@ -7,8 +7,8 @@ COPY --link Caddyfile /etc/frankenphp/Caddyfile
 ENV SERVER_NAME=:80
 
 RUN apk add --update --no-cache shadow git \
-    && install-php-extensions pdo_mysql intl zip \
-    && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
+  && install-php-extensions pdo_mysql intl zip \
+  && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
 CMD ["--config", "/etc/frankenphp/Caddyfile"]
 ENTRYPOINT ["/entrypoint"]

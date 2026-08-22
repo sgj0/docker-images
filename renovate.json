@@ -1,17 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
   "rangeStrategy": "bump",
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "packageRules": [
     {
-      "matchManagers": [
-        "dockerfile",
-        "docker-compose"
-      ],
+      "matchManagers": ["dockerfile", "docker-compose"],
       "groupName": "Docker images",
       "branchTopic": "docker-deps"
     }

@@ -8,14 +8,14 @@ set -e
 USER_ID=${LOCAL_USER_ID:-1000}
 
 if [ ! -z $LOCAL_USER_ID ]; then
-    echo "Starting with UID : $USER_ID"
+  echo "Starting with UID : $USER_ID"
 
-    # Fix git not happy with ownership on mac docker "fatal: detected dubious ownership in repository at '/app'"
-    # (similar to https://github.com/go-gitea/gitea/issues/19455)
-    git config --system --add safe.directory /app
+  # Fix git not happy with ownership on mac docker "fatal: detected dubious ownership in repository at '/app'"
+  # (similar to https://github.com/go-gitea/gitea/issues/19455)
+  git config --system --add safe.directory /app
 
-    usermod -u $USER_ID node
-    groupmod -g $USER_ID node
+  usermod -u $USER_ID node
+  groupmod -g $USER_ID node
 fi
 
 exec "$@"
