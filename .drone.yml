@@ -64,7 +64,6 @@ steps:
       tags: guardian
       context: ./guardian
       platforms:
-        - linux/amd64
         - linux/arm64
 
   - name: icecast
@@ -79,34 +78,6 @@ steps:
       tags: icecast
       context: ./icecast
       platforms:
-        - linux/amd64
-        - linux/arm64
-
-  - name: lftp
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./lftp/Dockerfile
-      tags: lftp
-      context: ./lftp
-
-  - name: liquidsoap
-    image: thegeeklab/drone-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./liquidsoap/Dockerfile
-      tags: liquidsoap
-      context: ./liquidsoap
-      platforms:
-        - linux/amd64
         - linux/arm64
 
   - name: node-tools
