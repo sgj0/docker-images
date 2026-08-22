@@ -1,4 +1,4 @@
-FROM alvrme/alpine-android:android-37.1-jdk21
+FROM alvrme/alpine-android:android-36.1-jdk21
 
 ARG GRADLE_VERSION=8.14.4
 
