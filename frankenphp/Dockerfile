@@ -1,8 +1,8 @@
 FROM dunglas/frankenphp:alpine AS base
 
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
-COPY --link --chmod=755 entrypoint.sh /entrypoint
-COPY --link Caddyfile /etc/frankenphp/Caddyfile
+COPY --chmod=755 entrypoint.sh /entrypoint
+COPY Caddyfile /etc/frankenphp/Caddyfile
 
 ENV SERVER_NAME=:80
 
