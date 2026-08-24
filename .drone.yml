@@ -25,6 +25,7 @@ steps:
       dockerfile: ./frankenphp/Dockerfile
       tags: frankenphp
       context: ./frankenphp
+      platforms: linux/amd64
       target: prod
 
   - name: frankenphp-dev
