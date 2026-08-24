@@ -3,7 +3,7 @@ type: kubernetes
 
 steps:
   - name: cordova-build
-    image: thegeeklab/drone-docker-buildx
+    image: woodpeckerci/plugin-docker-buildx
     privileged: true
     settings:
       username: sgj0
@@ -18,8 +18,7 @@ steps:
         - linux/arm64
 
   - name: frankenphp
-    image: plugins/docker
-    privileged: true
+    image: woodpeckerci/plugin-docker-buildx
     settings:
       username: sgj0
       password:
@@ -32,7 +31,6 @@ steps:
 
   - name: frankenphp-dev
     image: plugins/docker
-    privileged: true
     settings:
       username: sgj0
       password:
@@ -45,7 +43,6 @@ steps:
 
   - name: freqtrade
     image: plugins/docker
-    privileged: true
     settings:
       username: sgj0
       password:
@@ -82,7 +79,7 @@ steps:
       platform: linux/arm64
 
   - name: node-tools
-    image: thegeeklab/drone-docker-buildx
+    image: woodpeckerci/plugin-docker-buildx
     privileged: true
     settings:
       username: sgj0
@@ -97,7 +94,7 @@ steps:
         - linux/arm64
 
   - name: prettier
-    image: thegeeklab/drone-docker-buildx
+    image: woodpeckerci/plugin-docker-buildx
     privileged: true
     settings:
       username: sgj0
