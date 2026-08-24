@@ -2,20 +2,18 @@ kind: pipeline
 type: kubernetes
 
 steps:
-  - name: cordova-build
-    image: woodpeckerci/plugin-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./cordova-build/Dockerfile
-      tags: cordova-build
-      context: ./cordova-build
-      platforms:
-        - linux/amd64
-        - linux/arm64
+  # - name: cordova-build
+  #   image: woodpeckerci/plugin-docker-buildx
+  #   privileged: true
+  #   settings:
+  #     username: sgj0
+  #     password:
+  #       from_secret: DOCKER_PASSWORD
+  #     repo: sgj0/${DRONE_REPO_NAME}
+  #     dockerfile: ./cordova-build/Dockerfile
+  #     tags: cordova-build
+  #     context: ./cordova-build
+  #     platforms: linux/amd64,linux/arm64
 
   - name: frankenphp
     image: woodpeckerci/plugin-docker-buildx
@@ -89,9 +87,7 @@ steps:
       dockerfile: ./node-tools/Dockerfile
       tags: node-tools
       context: ./node-tools
-      platforms:
-        - linux/amd64
-        - linux/arm64
+      platforms: linux/amd64,linux/arm64
 
   - name: prettier
     image: woodpeckerci/plugin-docker-buildx
@@ -104,9 +100,7 @@ steps:
       dockerfile: ./prettier/Dockerfile
       tags: prettier
       context: ./prettier
-      platforms:
-        - linux/amd64
-        - linux/arm64
+      platforms: linux/amd64,linux/arm64
 
   - name: rtmp
     image: plugins/docker
