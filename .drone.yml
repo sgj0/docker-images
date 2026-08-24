@@ -48,7 +48,7 @@ steps:
       tags: frankenphp-dev
       context: ./frankenphp
       target: dev
-      cache_from: type=local,src=/var/cache/builds
+      cache_from: 'type=local,src=/var/cache/builds'
     volumes:
       - name: cache
         path: /var/cache/builds
