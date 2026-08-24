@@ -13,9 +13,7 @@ steps:
       dockerfile: ./cordova-build/Dockerfile
       tags: cordova-build
       context: ./cordova-build
-      platform:
-        - linux/amd64
-        - linux/arm64
+      platform: linux/amd64,linux/arm64
 
   - name: frankenphp
     image: plugins/docker
@@ -66,8 +64,7 @@ steps:
       dockerfile: ./guardian/Dockerfile
       tags: guardian
       context: ./guardian
-      platform:
-        - linux/arm64
+      platform: linux/arm64
 
   - name: icecast
     image: plugins/docker
@@ -80,8 +77,7 @@ steps:
       dockerfile: ./icecast/Dockerfile
       tags: icecast
       context: ./icecast
-      platform:
-        - linux/arm64
+      platform: linux/arm64
 
   - name: node-tools
     image: plugins/docker
@@ -94,9 +90,7 @@ steps:
       dockerfile: ./node-tools/Dockerfile
       tags: node-tools
       context: ./node-tools
-      platform:
-        - linux/amd64
-        - linux/arm64
+      platform: linux/amd64,linux/arm64
 
   - name: prettier
     image: plugins/docker
@@ -109,9 +103,7 @@ steps:
       dockerfile: ./prettier/Dockerfile
       tags: prettier
       context: ./prettier
-      platform:
-        - linux/amd64
-        - linux/arm64
+      platform: linux/amd64,linux/arm64
 
   - name: rtmp
     image: plugins/docker
@@ -124,6 +116,4 @@ steps:
       dockerfile: ./rtmp/Dockerfile
       tags: rtmp
       context: ./rtmp
-      platform:
-        - linux/amd64
-        - linux/arm64
+      platform: linux/amd64,linux/arm64
