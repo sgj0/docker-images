@@ -1,6 +1,10 @@
 kind: pipeline
 type: kubernetes
 
+volumes:
+  - name: cache
+    temp: {}
+
 steps:
   - name: cordova-build
     image: woodpeckerci/plugin-docker-buildx
@@ -27,6 +31,10 @@ steps:
       tags: frankenphp
       context: ./frankenphp
       target: prod
+      cache_to: type=local,dest=/var/cache/builds
+    volumes:
+      - name: cache
+        path: /var/cache/builds
 
   - name: frankenphp-dev
     image: woodpeckerci/plugin-docker-buildx
@@ -40,9 +48,14 @@ steps:
       tags: frankenphp-dev
       context: ./frankenphp
       target: dev
+      cache_from: type=local,src=/var/cache/builds
+    volumes:
+      - name: cache
+        path: /var/cache/builds
 
   - name: freqtrade
-    image: plugins/docker
+    image: woodpeckerci/plugin-docker-buildx
+    privileged: true
     settings:
       username: sgj0
       password:
