@@ -3,7 +3,7 @@ type: kubernetes
 
 steps:
   - name: cordova-build
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -13,9 +13,12 @@ steps:
       dockerfile: ./cordova-build/Dockerfile
       tags: cordova-build
       context: ./cordova-build
+      platform:
+        - linux/amd64
+        - linux/arm64
 
   - name: frankenphp
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -28,7 +31,7 @@ steps:
       target: prod
 
   - name: frankenphp-dev
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -41,7 +44,7 @@ steps:
       target: dev
 
   - name: freqtrade
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -53,7 +56,7 @@ steps:
       context: ./freqtrade
 
   - name: guardian
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -63,11 +66,11 @@ steps:
       dockerfile: ./guardian/Dockerfile
       tags: guardian
       context: ./guardian
-      platforms:
+      platform:
         - linux/arm64
 
   - name: icecast
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -77,11 +80,11 @@ steps:
       dockerfile: ./icecast/Dockerfile
       tags: icecast
       context: ./icecast
-      platforms:
+      platform:
         - linux/arm64
 
   - name: node-tools
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -91,12 +94,12 @@ steps:
       dockerfile: ./node-tools/Dockerfile
       tags: node-tools
       context: ./node-tools
-      platforms:
+      platform:
         - linux/amd64
         - linux/arm64
 
   - name: prettier
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -106,12 +109,12 @@ steps:
       dockerfile: ./prettier/Dockerfile
       tags: prettier
       context: ./prettier
-      platforms:
+      platform:
         - linux/amd64
         - linux/arm64
 
   - name: rtmp
-    image: thegeeklab/drone-docker-buildx
+    image: plugins/docker
     privileged: true
     settings:
       username: sgj0
@@ -121,6 +124,6 @@ steps:
       dockerfile: ./rtmp/Dockerfile
       tags: rtmp
       context: ./rtmp
-      platforms:
+      platform:
         - linux/amd64
         - linux/arm64
