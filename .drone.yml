@@ -3,7 +3,7 @@ type: kubernetes
 
 steps:
   - name: cordova-build
-    image: plugins/docker
+    image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
       username: sgj0
@@ -80,7 +80,7 @@ steps:
       platform: linux/arm64
 
   - name: node-tools
-    image: plugins/docker
+    image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
       username: sgj0
@@ -93,7 +93,7 @@ steps:
       platform: linux/amd64, linux/arm64
 
   - name: prettier
-    image: plugins/docker
+    image: thegeeklab/drone-docker-buildx
     privileged: true
     settings:
       username: sgj0
@@ -116,4 +116,4 @@ steps:
       dockerfile: ./rtmp/Dockerfile
       tags: rtmp
       context: ./rtmp
-      platform: linux/amd64, linux/arm64
+      platform: linux/arm64
