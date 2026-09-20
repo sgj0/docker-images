@@ -21,9 +21,10 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN npm install --location=global npm pnpm npm-check-updates npm-run-all cordova
-
-RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
+RUN apk add --update --no-cache jq \
+  && npm install --location=global npm pnpm npm-check-updates npm-run-all cordova \
+  && mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini \
+  && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
 FROM base AS prod
 
