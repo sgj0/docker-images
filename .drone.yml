@@ -15,6 +15,19 @@ steps:
       context: ./cordova-build
       platforms: linux/amd64,linux/arm64
 
+  - name: dev-tools
+    image: woodpeckerci/plugin-docker-buildx
+    privileged: true
+    settings:
+      username: sgj0
+      password:
+        from_secret: DOCKER_PASSWORD
+      repo: sgj0/${DRONE_REPO_NAME}
+      dockerfile: ./dev-tools/Dockerfile
+      tags: dev-tools
+      context: ./dev-tools
+      platforms: linux/amd64,linux/arm64
+
   - name: frankenphp
     image: woodpeckerci/plugin-docker-buildx
     privileged: true
@@ -79,19 +92,6 @@ steps:
       tags: icecast
       context: ./icecast
       platforms: linux/arm64
-
-  - name: node-tools
-    image: woodpeckerci/plugin-docker-buildx
-    privileged: true
-    settings:
-      username: sgj0
-      password:
-        from_secret: DOCKER_PASSWORD
-      repo: sgj0/${DRONE_REPO_NAME}
-      dockerfile: ./node-tools/Dockerfile
-      tags: node-tools
-      context: ./node-tools
-      platforms: linux/amd64,linux/arm64
 
   - name: prettier
     image: woodpeckerci/plugin-docker-buildx

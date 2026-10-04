@@ -14,8 +14,8 @@ if [ ! -z $LOCAL_USER_ID ]; then
   # (similar to https://github.com/go-gitea/gitea/issues/19455)
   git config --system --add safe.directory /app
 
-  usermod -u $USER_ID node
-  groupmod -g $USER_ID node
+  usermod -u $USER_ID dev
+  groupmod -g $USER_ID dev
 fi
 
 exec "$@"
