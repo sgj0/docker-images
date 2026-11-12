@@ -23,6 +23,11 @@
 
     root * /app/public
 
+    header {
+        -Server
+        -X-Powered-By
+    }
+
     encode zstd br gzip
 
     {$CADDY_SERVER_EXTRA_DIRECTIVES}
